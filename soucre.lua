@@ -22,10 +22,15 @@ Items:AddDropdown({
 	Name = "Select",
 	Default = "",
 	Options = {"Sukuna", "Ice Awakening"},
-	Callback = function(state)
-        sukunaskill = state
-        iceskill = state
-	end    
+	Callback = function(selectedOption)
+    if selectedOption == "Sukuna" then
+        sukunaskill = true
+        iceskill = false
+    elseif selectedOption == "Ice Awakening" then
+        sukunaskill = false
+        iceskill = true
+    end
+end 
 })
 
 -- function atoch
@@ -52,6 +57,7 @@ Items:AddButton({
             task.wait(1)
             pressKeyE()
         end     
+    end
 })
 
 local ChangeTime = Tab1:AddSection({
@@ -98,7 +104,7 @@ Players.PlayerAdded:Connect(function(player)
     end)
 end)
 
-local attack function()
+local function attack()
     local localPlayer = Players.LocalPlayer
     if localPlayer and localPlayer.Character then
         local character = localPlayer.Character
@@ -116,8 +122,7 @@ local attack function()
                     task.wait(settime)
                     rspl(localPlayer)
                 end)
-            end
-        end    
+            end   
 
         elseif iceskill then
             local skill = localPlayer.Backpack:FindFirstChild("IceAwakening")
@@ -176,7 +181,7 @@ Anti:AddToggle({
 	Callback = function(state)
         afk = state
         if state then
-            local VirtualUser = game:service('VirtualUser')
+            local VirtualUser = game:GetService('VirtualUser')
             game:service('Players').LocalPlayer.Idled:connect(function()
                 VirtualUser:CaptureController()
                 VirtualUser:ClickButton2(Vector2.new())
