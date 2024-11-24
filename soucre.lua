@@ -15,22 +15,43 @@ local Items = Tab1:AddSection({
 	Name = "Items"
 })
 
+local sukunaskill = false
+local iceskill = false
+
 Items:AddDropdown({
 	Name = "Select",
 	Default = "",
 	Options = {"Sukuna", "Ice Awakening"},
-	Callback = function(skill)
-        if sukuna then
-            sukunaskill = state
-        elseif iceawakening then
-            iceskill = state
+	Callback = function(state)
+        sukunaskill = state
+        iceskill = state
 	end    
 })
+
+-- function atoch
+
+local UIS = game:GetService("UserInputService") 
+local VirtualInputManager = game:GetService("VirtualInputManager") 
+local RunService = game:GetService("RunService") 
+
+local function pressKeyE()
+    VirtualInputManager:SendKeyEvent(true, Enum.KeyCode.E, false, game) 
+    wait(0.1) 
+    VirtualInputManager:SendKeyEvent(false, Enum.KeyCode.E, false, game) 
+end
 
 Items:AddButton({
 	Name = "Teleport",
 	Callback = function()
-  	end    
+        if sukunaskill then
+            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(1061.43738, 92.1607361, 101.183472, -0.697700858, 0.0441585705, 0.715026915, 0.125600129, 0.990178764, 0.0614053048, -0.705292881, 0.132650018, -0.69639492) 
+            task.wait(1)
+            pressKeyE()
+        elseif iceskill then
+            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-2644.43213, 4.73413086, -483.230469, -0.62928617, 0, 0.777173758, 0, 1, 0, -0.777173758, 0, -0.62928617)
+            task.wait(1)
+            pressKeyE()
+        end     
 })
 
 local ChangeTime = Tab1:AddSection({
