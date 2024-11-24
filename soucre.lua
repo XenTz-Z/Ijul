@@ -19,7 +19,7 @@ local Items = Tab1:AddSection({
 -- all
 
 local config = {
-    settime = 10,
+    settime = 33,
     sukunaskill = false,
     iceskill = false,
     afk = false
@@ -76,10 +76,10 @@ local ChangeTime = Tab1:AddSection({
 ChangeTime:AddParagraph("Time Default", "Sukuna: 33s - SnowIsland | Ice Awakening: 13s - AbondedSnowIsland")
 
 ChangeTime:AddSlider({
-	Name = "Slider",
+	Name = "Second",
 	Min = 1,
 	Max = 100,
-	Default = 10,
+	Default = 33,
 	Color = Color3.fromRGB(0,255,255),
 	Increment = 1,
 	ValueName = "second",
@@ -180,15 +180,15 @@ local Anti = Tab2:AddSection({
 })
 
 Anti:AddToggle({
-    Name = "config.afk",
+    Name = "AFK",
     Default = false,
     Callback = function(state)
         config.afk = state
         if state then
-            local VirtualUser = game:GetService('VirtualUser')
-            game:GetService("Players").LocalPlayer.Idled:Connect(function()
-                VirtualUser:CaptureController()
-                VirtualUser:ClickButton2(Vector2.new())
+            local active = game:service'VirtualUser'
+            game:service'Players'.LocalPlayer.Idled:connect(function()
+                active:CaptureController()
+                active:ClickButton2(Vector2.new())
             end)
         end
     end 
