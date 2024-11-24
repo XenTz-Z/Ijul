@@ -15,8 +15,17 @@ local Items = Tab1:AddSection({
 	Name = "Items"
 })
 
-local sukunaskill = false
-local iceskill = false
+
+-- all
+
+local config = {
+    settime = 10,
+    sukunaskill = false,
+    iceskill = false,
+    afk = false
+}
+
+-- >
 
 Items:AddDropdown({
 	Name = "Select",
@@ -24,11 +33,11 @@ Items:AddDropdown({
 	Options = {"Sukuna", "Ice Awakening"},
 	Callback = function(selectedOption)
     if selectedOption == "Sukuna" then
-        sukunaskill = true
-        iceskill = false
+        config.sukunaskill = true
+        config.iceskill = false
     elseif selectedOption == "Ice Awakening" then
-        sukunaskill = false
-        iceskill = true
+        config.sukunaskill = false
+        config.iceskill = true
     end
 end 
 })
@@ -48,11 +57,11 @@ end
 Items:AddButton({
 	Name = "Teleport",
 	Callback = function()
-        if sukunaskill then
+        if config.sukunaskill then
             game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(1061.43738, 92.1607361, 101.183472, -0.697700858, 0.0441585705, 0.715026915, 0.125600129, 0.990178764, 0.0614053048, -0.705292881, 0.132650018, -0.69639492) 
             task.wait(1)
             pressKeyE()
-        elseif iceskill then
+        elseif config.iceskill then
             game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-2644.43213, 4.73413086, -483.230469, -0.62928617, 0, 0.777173758, 0, 1, 0, -0.777173758, 0, -0.62928617)
             task.wait(1)
             pressKeyE()
@@ -66,8 +75,6 @@ local ChangeTime = Tab1:AddSection({
 
 ChangeTime:AddParagraph("Time Default", "Sukuna: 33s - SnowIsland | Ice Awakening: 13s - AbondedSnowIsland")
 
-local settime = 10
-
 ChangeTime:AddSlider({
 	Name = "Slider",
 	Min = 1,
@@ -77,7 +84,7 @@ ChangeTime:AddSlider({
 	Increment = 1,
 	ValueName = "second",
 	Callback = function(state)
-        settime = state
+        config.settime = state
 	end    
 })
 
@@ -109,7 +116,7 @@ local function attack()
     if localPlayer and localPlayer.Character then
         local character = localPlayer.Character
         local humanoid = character:FindFirstChildOfClass("Humanoid")
-        if sukunaskill then
+        if config.sukunaskill then
             local skill = localPlayer.Backpack:FindFirstChild("Sukuna")
             local event = game:GetService("ReplicatedStorage"):FindFirstChild("Events")
                 and game:GetService("ReplicatedStorage").Events:FindFirstChild("MalevolentShrine")
@@ -119,12 +126,12 @@ local function attack()
                     character.HumanoidRootPart.CFrame = CFrame.new(-2411.69824, 19.8741894, -598.203064, 1, 0, 0, 0, 1, 0, 0, 0, 1)
                     humanoid:EquipTool(skill)
                     event:FireServer()
-                    task.wait(settime)
+                    task.wait(config.settime)
                     rspl(localPlayer)
                 end)
             end   
 
-        elseif iceskill then
+        elseif config.iceskill then
             local skill = localPlayer.Backpack:FindFirstChild("IceAwakening")
             local event = game:GetService("ReplicatedStorage"):FindFirstChild("Events")
                 and game:GetService("ReplicatedStorage").Events:FindFirstChild("IceAge")
@@ -135,7 +142,7 @@ local function attack()
                     task.wait(5)
                     humanoid:EquipTool(skill)
                     event:FireServer()
-                    task.wait(settime)
+                    task.wait(config.settime)
                     rspl(localPlayer)
                 end)
             end
@@ -143,12 +150,10 @@ local function attack()
     end
 end
 
-local autofarm = false
-
 AutoFarm:AddToggle({
-	Name = "Auto Farm",
-	Default = false,
-	Callback = function(state)
+    Name = "Auto Farm",
+    Default = false,
+    Callback = function(state)
         autofarm = state
         if autofarm then
             spawn(function()
@@ -157,7 +162,8 @@ AutoFarm:AddToggle({
                     task.wait(1) 
                 end
             end)
-	end    
+        end 
+    end 
 })
 
 
@@ -173,20 +179,19 @@ local Anti = Tab2:AddSection({
     Name = "Anti"
 })
 
-local afk = false
-
 Anti:AddToggle({
-    Name = "AFK",
+    Name = "config.afk",
     Default = false,
-	Callback = function(state)
-        afk = state
+    Callback = function(state)
+        config.afk = state
         if state then
             local VirtualUser = game:GetService('VirtualUser')
-            game:service('Players').LocalPlayer.Idled:connect(function()
+            game:GetService("Players").LocalPlayer.Idled:Connect(function()
                 VirtualUser:CaptureController()
                 VirtualUser:ClickButton2(Vector2.new())
             end)
-	end 
+        end
+    end 
 })
 
 
