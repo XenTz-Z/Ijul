@@ -33,6 +33,7 @@ local config = {
 Items:AddDropdown({
 	Name = "Select",
 	Default = "",
+    Save = true,
 	Options = {"Sukuna", "Ice Awakening"},
 	Callback = function(selectedOption)
     if selectedOption == "Sukuna" then
@@ -81,6 +82,7 @@ ChangeTime:AddParagraph("Time Default", "Sukuna: 33s - SnowIsland | Ice Awakenin
 ChangeTime:AddTextbox({
     Name = "Second",
     Default = "33", 
+    Save = true,
     TextDisappear = false, 
     Callback = function(input)
         local newTime = tonumber(input) 
@@ -158,6 +160,7 @@ end
 AutoFarm:AddToggle({
     Name = "Auto Farm",
     Default = false,
+    Save = true,
     Callback = function(state)
         autofarm = state
         if autofarm then
@@ -189,6 +192,7 @@ local afkConnection
 Anti:AddToggle({
     Name = "AFK",
     Default = false,
+    Save = true,
     Callback = function(state)
         config.afk = state
         if config.afk then
