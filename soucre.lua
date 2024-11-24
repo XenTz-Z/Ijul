@@ -2,7 +2,7 @@ if tostring(game.PlaceId) == "18688206652" then
     
 print("Ijul Piece 2 | Author Code: XIE")
 
-local OrionLib = loadstring(game:HttpGet(('https://raw.githubusercontent.com/shlexware/Orion/main/source')))()
+local OrionLib = loadstring(game:HttpGet(('https://raw.githubusercontent.com/XenTz-Z/Orion/refs/heads/main/source')))()
     
 OrionLib:MakeNotification({ Name = "Ijul Piece 2", Content = "by XIE and Hao Modder", Image = "rbxthumb://type=Asset&id=104004670815583&w=150&h=150", Time = 5 })
 
