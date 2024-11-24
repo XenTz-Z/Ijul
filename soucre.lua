@@ -2,11 +2,11 @@ if tostring(game.PlaceId) == "18688206652" then
     
 print("Ijul Piece 2 | Author Code: XIE")
 
-local OrionLib = loadstring(game:HttpGet(('https://raw.githubusercontent.com/XenTz-Z/Orion/refs/heads/main/source')))()
+local OrionLib = loadstring(game:HttpGet(('https://raw.githubusercontent.com/shlexware/Orion/main/source')))()
     
 OrionLib:MakeNotification({ Name = "Ijul Piece 2", Content = "by XIE and Hao Modder", Image = "rbxthumb://type=Asset&id=104004670815583&w=150&h=150", Time = 5 })
 
-local Window = OrionLib:MakeWindow({ Name = "Ijul Piece 2 | Hao Modder", HidePremium = false, SaveConfig = true, ConfigFolder = "XIE", IntroText = "script farm", IntroIcon = "rbxthumb://type=Asset&id=77349212873128&w=150&h=150" })
+local Window = OrionLib:MakeWindow({ Name = "Ijul Piece 2 | Hao Modder", HidePremium = false, SaveConfig = true, ConfigFolder = "XIEx", IntroText = "script farm", IntroIcon = "rbxthumb://type=Asset&id=77349212873128&w=150&h=150" })
 
 local Tab1 = Window:MakeTab({
 	Name = "Main",
@@ -34,6 +34,7 @@ Items:AddDropdown({
 	Name = "Select",
 	Default = "",
     Save = true,
+    Flag = "equip",
 	Options = {"Sukuna", "Ice Awakening"},
 	Callback = function(selectedOption)
     if selectedOption == "Sukuna" then
@@ -83,6 +84,7 @@ ChangeTime:AddTextbox({
     Name = "Second",
     Default = "33", 
     Save = true,
+    Flag = "second",
     TextDisappear = false, 
     Callback = function(input)
         local newTime = tonumber(input) 
@@ -161,6 +163,7 @@ AutoFarm:AddToggle({
     Name = "Auto Farm",
     Default = false,
     Save = true,
+    Flag = "autofarm",
     Callback = function(state)
         autofarm = state
         if autofarm then
@@ -187,24 +190,25 @@ local Anti = Tab2:AddSection({
     Name = "Anti"
 })
 
-local afkConnection 
+local cuser 
 
 Anti:AddToggle({
     Name = "AFK",
     Default = false,
     Save = true,
+    Flag = "afk",
     Callback = function(state)
         config.afk = state
         if config.afk then
-            afkConnection = game:GetService("Players").LocalPlayer.Idled:Connect(function()
+            cuser = game:GetService("Players").LocalPlayer.Idled:Connect(function()
                 local active = game:GetService("VirtualUser")
                 active:CaptureController()
                 active:ClickButton2(Vector2.new())
             end)
         else
-            if afkConnection then
-                afkConnection:Disconnect()
-                afkConnection = nil
+            if cuser then
+                cuser:Disconnect()
+                cuser = nil
             end
         end
     end 
