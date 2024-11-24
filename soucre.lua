@@ -80,13 +80,13 @@ ChangeTime:AddParagraph("Time Default", "Sukuna: 33s - SnowIsland | Ice Awakenin
 
 ChangeTime:AddTextbox({
     Name = "Second",
-    Default = "33",
-    TextDisappear = true, 
+    Default = "33", 
+    TextDisappear = false, 
     Callback = function(input)
-        local newTime = tonumber(input)
+        local newTime = tonumber(input) 
         if newTime and newTime > 0 then
             config.settime = newTime 
-            print("Set time updated to:", newTime)
+            print("Settime updated to:", newTime)
         else
             warn("Invalid input! Please enter a positive number.")
         end
