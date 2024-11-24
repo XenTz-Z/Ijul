@@ -184,17 +184,24 @@ local Anti = Tab2:AddSection({
     Name = "Anti"
 })
 
+local afkConnection 
+
 Anti:AddToggle({
     Name = "AFK",
     Default = false,
     Callback = function(state)
         config.afk = state
-        if state then
-            local active = game:service'VirtualUser'
-            game:service'Players'.LocalPlayer.Idled:connect(function()
+        if config.afk then
+            afkConnection = game:GetService("Players").LocalPlayer.Idled:Connect(function()
+                local active = game:GetService("VirtualUser")
                 active:CaptureController()
                 active:ClickButton2(Vector2.new())
             end)
+        else
+            if afkConnection then
+                afkConnection:Disconnect()
+                afkConnection = nil
+            end
         end
     end 
 })
