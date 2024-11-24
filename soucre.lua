@@ -1,4 +1,7 @@
 if tostring(game.PlaceId) == "18688206652" then
+    
+print("Ijul Piece 2 | Author Code: XIE")
+
 local OrionLib = loadstring(game:HttpGet(('https://raw.githubusercontent.com/shlexware/Orion/main/source')))()
     
 OrionLib:MakeNotification({ Name = "Ijul Piece 2", Content = "by XIE and Hao Modder", Image = "rbxthumb://type=Asset&id=104004670815583&w=150&h=150", Time = 5 })
@@ -75,17 +78,19 @@ local ChangeTime = Tab1:AddSection({
 
 ChangeTime:AddParagraph("Time Default", "Sukuna: 33s - SnowIsland | Ice Awakening: 13s - AbondedSnowIsland")
 
-ChangeTime:AddSlider({
-	Name = "Second",
-	Min = 1,
-	Max = 100,
-	Default = 33,
-	Color = Color3.fromRGB(0,255,255),
-	Increment = 1,
-	ValueName = "second",
-	Callback = function(state)
-        config.settime = state
-	end    
+ChangeTime:AddTextbox({
+    Name = "Second",
+    Default = "33",
+    TextDisappear = true, 
+    Callback = function(input)
+        local newTime = tonumber(input)
+        if newTime and newTime > 0 then
+            config.settime = newTime 
+            print("Set time updated to:", newTime)
+        else
+            warn("Invalid input! Please enter a positive number.")
+        end
+    end    
 })
 
 local AutoFarm = Tab1:AddSection({
