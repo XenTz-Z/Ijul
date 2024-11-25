@@ -14,7 +14,7 @@ OrionLib:MakeNotification({
 local Window = OrionLib:MakeWindow({ 
     Name = "Ijul Piece 2 | Hao Modder", 
     SaveConfig = true, 
-    ConfigFolder = "XIExV2", 
+    ConfigFolder = "XIExV1", 
     IntroText = "script farm", 
     IntroIcon = "rbxthumb://type=Asset&id=77349212873128&w=150&h=150" 
 })
@@ -249,8 +249,6 @@ end
 AutoFarm:AddToggle({
     Name = "Auto Farm",
     Default = false,
-    Save = true,
-    Flag = "autofarm",
     Callback = function(state)
         autofarm = state
         if autofarm then
