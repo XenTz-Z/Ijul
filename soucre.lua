@@ -2,7 +2,7 @@ if tostring(game.PlaceId) == "18688206652" then
     
 print("Ijul Piece 2 | Author Code: XIE")
 
-local OrionLib = loadstring(game:HttpGet(('https://raw.githubusercontent.com/shlexware/Orion/main/source')))()
+local OrionLib = loadstring(game:HttpGet(('https://raw.githubusercontent.com/XenTz-Z/Orion/refs/heads/main/source')))()
     
 OrionLib:MakeNotification({ 
     Name = "Ijul Piece 2", 
@@ -14,15 +14,14 @@ OrionLib:MakeNotification({
 local Window = OrionLib:MakeWindow({ 
     Name = "Ijul Piece 2 | Hao Modder", 
     SaveConfig = true, 
-    ConfigFolder = "XIExV1", 
+    ConfigFolder = "XIExV1.0.2", 
     IntroText = "script farm", 
     IntroIcon = "rbxthumb://type=Asset&id=77349212873128&w=150&h=150" 
 })
 
 local Tab1 = Window:MakeTab({
 	Name = "Main",
-	Icon = "rbxassetid://10723407389",
-	PremiumOnly = false
+	Icon = "rbxassetid://10723407389"
 })
 
 local Items = Tab1:AddSection({
@@ -36,11 +35,12 @@ local config = {
     settime = 33,
     sukunaskill = false,
     iceskill = false,
-    afk = false,
     windmill = false,
     snowisland1 = false,
     snowisland2 = false,
-    abandoned = false
+    abandoned = false,
+    atrait = false,
+    afk = false  
 }
 
 -- >
@@ -263,15 +263,39 @@ AutoFarm:AddToggle({
 })
 
 
-
-
 local Tab2 = Window:MakeTab({
-	Name = "Misc",
-	Icon = "rbxassetid://10734950309",
-	PremiumOnly = false
+	Name = "Other",
+	Icon = "rbxassetid://7733916988"
 })
 
-local Anti = Tab2:AddSection({
+local AutoTrait = Tab2:AddSection({
+	Name = "Spin Trait"
+})
+
+AutoTrait:AddToggle({
+    Name = "Auto Trait",
+    Default = false,
+    Callback = function(state)
+        config.atrait = state 
+        if config.atrait then
+            while config.atrait do
+                game:GetService("ReplicatedStorage"):WaitForChild("Events"):WaitForChild("SpinTrait"):FireServer("Normal")
+                wait(1) 
+            end
+        end
+    end    
+})
+
+
+
+
+
+local Tab3 = Window:MakeTab({
+	Name = "Misc",
+	Icon = "rbxassetid://10734950309"
+})
+
+local Anti = Tab3:AddSection({
     Name = "Anti"
 })
 
