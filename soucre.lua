@@ -4,9 +4,20 @@ print("Ijul Piece 2 | Author Code: XIE")
 
 local OrionLib = loadstring(game:HttpGet(('https://raw.githubusercontent.com/shlexware/Orion/main/source')))()
     
-OrionLib:MakeNotification({ Name = "Ijul Piece 2", Content = "by XIE and Hao Modder", Image = "rbxthumb://type=Asset&id=104004670815583&w=150&h=150", Time = 5 })
+OrionLib:MakeNotification({ 
+    Name = "Ijul Piece 2", 
+    Content = "by XIE and Hao Modder", 
+    Image = "rbxthumb://type=Asset&id=104004670815583&w=150&h=150", 
+    Time = 5 
+})
 
-local Window = OrionLib:MakeWindow({ Name = "Ijul Piece 2 | Hao Modder", HidePremium = false, SaveConfig = true, ConfigFolder = "XIEx", IntroText = "script farm", IntroIcon = "rbxthumb://type=Asset&id=77349212873128&w=150&h=150" })
+local Window = OrionLib:MakeWindow({ 
+    Name = "Ijul Piece 2 | Hao Modder", 
+    SaveConfig = true, 
+    ConfigFolder = "XIExV2", 
+    IntroText = "script farm", 
+    IntroIcon = "rbxthumb://type=Asset&id=77349212873128&w=150&h=150" 
+})
 
 local Tab1 = Window:MakeTab({
 	Name = "Main",
@@ -25,7 +36,11 @@ local config = {
     settime = 33,
     sukunaskill = false,
     iceskill = false,
-    afk = false
+    afk = false,
+    windmill = false,
+    snowisland1 = false,
+    snowisland2 = false,
+    abandoned = false
 }
 
 -- >
@@ -34,13 +49,13 @@ Items:AddDropdown({
 	Name = "Select",
 	Default = "",
     Save = true,
-    Flag = "equip",
+    Flag = "item_equip",
 	Options = {"Sukuna", "Ice Awakening"},
-	Callback = function(selectedOption)
-    if selectedOption == "Sukuna" then
+	Callback = function(selected)
+    if selected == "Sukuna" then
         config.sukunaskill = true
         config.iceskill = false
-    elseif selectedOption == "Ice Awakening" then
+    elseif selected == "Ice Awakening" then
         config.sukunaskill = false
         config.iceskill = true
     end
@@ -74,6 +89,7 @@ Items:AddButton({
     end
 })
 
+
 local ChangeTime = Tab1:AddSection({
     Name = "Change Time"
 })
@@ -82,9 +98,7 @@ ChangeTime:AddParagraph("Time Default", "Sukuna: 33s - SnowIsland | Ice Awakenin
 
 ChangeTime:AddTextbox({
     Name = "Second",
-    Default = "33", 
-    Save = true,
-    Flag = "second",
+    Default = "33",
     TextDisappear = false, 
     Callback = function(input)
         local newTime = tonumber(input) 
@@ -101,7 +115,44 @@ local AutoFarm = Tab1:AddSection({
     Name = "Farm & Teleport Island"
 })
 
--- function
+AutoFarm:AddParagraph("Island Select", "Snow Island 1 - Require: Sukuna | Snow Island 2 - Require: Ice Awakening")
+
+-- tp island 
+
+AutoFarm:AddDropdown({
+	Name = "Island Select",
+	Default = "",
+    Save = true,
+    Flag = "island_select",
+	Options = {"Windmill Island", "Snow Island 1", "Snow Island 2", "Abandoned Snow Island"},
+	Callback = function(selected)
+        if selected then 
+            if selected == "Windmill Island" then
+                config.windmill = true
+                config.snowisland1 = false
+                config.snowisland2 = false
+                config.abandoned = false
+            elseif selected == "Snow Island 1" then
+                config.windmill = false
+                config.snowisland1 = true
+                config.snowisland2 = false
+                config.abandoned = false
+            elseif selected == "Snow Island 2" then
+                config.windmill = false
+                config.snowisland1 = false
+                config.snowisland2 = true
+                config.abandoned = false
+            elseif selected == "Abandoned Snow Island" then
+                config.windmill = false
+                config.snowisland1 = false
+                config.snowisland2 = false
+                config.abandoned = true
+            end
+        end
+	end 
+})
+
+
 
 local Players = game:GetService("Players")
 
@@ -120,6 +171,8 @@ Players.PlayerAdded:Connect(function(player)
     end)
 end)
 
+
+
 local function attack()
     local localPlayer = Players.LocalPlayer
     if localPlayer and localPlayer.Character then
@@ -132,11 +185,28 @@ local function attack()
 
             if humanoid and skill and event then
                 pcall(function()
-                    character.HumanoidRootPart.CFrame = CFrame.new(-2411.69824, 19.8741894, -598.203064, 1, 0, 0, 0, 1, 0, 0, 0, 1)
-                    humanoid:EquipTool(skill)
-                    event:FireServer()
-                    task.wait(config.settime)
-                    rspl(localPlayer)
+                    if config.windmill then
+                        character.HumanoidRootPart.CFrame = CFrame.new(-340.595551, 28.6830673, 234.98175, 1, 0, 0, 0, 1, 0, 0, 0, 1)
+                        task.wait(2.5)
+                        humanoid:EquipTool(skill)
+                        event:FireServer()
+                        task.wait(config.settime)
+                        rspl(localPlayer)
+                    elseif config.snowisland1 then
+                        character.HumanoidRootPart.CFrame = CFrame.new(-2411.69824, 19.8741894, -598.203064, 1, 0, 0, 0, 1, 0, 0, 0, 1)
+                        task.wait(2.5)
+                        humanoid:EquipTool(skill)
+                        event:FireServer()
+                        task.wait(config.settime)
+                        rspl(localPlayer)
+                    elseif config.abandoned then
+                        character.HumanoidRootPart.CFrame = CFrame.new(2600.07031, 23.3707905, 1980.55969, 0.848060429, 0, 0.529899538, 0, 1, 0, -0.529899538, 0, 0.848060429)
+                        task.wait(2.5)
+                        humanoid:EquipTool(skill)
+                        event:FireServer()
+                        task.wait(config.settime)
+                        rspl(localPlayer)
+                    end
                 end)
             end   
 
@@ -147,17 +217,34 @@ local function attack()
                     
             if humanoid and skill and event then
                 pcall(function()
-                    character.HumanoidRootPart.CFrame = CFrame.new(2600.07031, 23.3707905, 1980.55969, 0.848060429, 0, 0.529899538, 0, 1, 0, -0.529899538, 0, 0.848060429)
-                    task.wait(5)
-                    humanoid:EquipTool(skill)
-                    event:FireServer()
-                    task.wait(config.settime)
-                    rspl(localPlayer)
+                    if config.windmill then
+                        character.HumanoidRootPart.CFrame = CFrame.new(-340.595551, 28.6830673, 234.98175, 1, 0, 0, 0, 1, 0, 0, 0, 1)
+                        task.wait(2.5)
+                        humanoid:EquipTool(skill)
+                        event:FireServer()
+                        task.wait(config.settime)
+                        rspl(localPlayer)
+                    elseif config.snowisland2 then
+                        character.HumanoidRootPart.CFrame = CFrame.new(-2570.79053, 20.1839676, -589.001343, 0, 0, -1, 0, 1, 0, 1, 0, 0)
+                        task.wait(2.5)
+                        humanoid:EquipTool(skill)
+                        event:FireServer()
+                        task.wait(config.settime)
+                        rspl(localPlayer)
+                    elseif config.abandoned then
+                        character.HumanoidRootPart.CFrame = CFrame.new(2600.07031, 23.3707905, 1980.55969, 0.848060429, 0, 0.529899538, 0, 1, 0, -0.529899538, 0, 0.848060429)
+                        task.wait(2.5)
+                        humanoid:EquipTool(skill)
+                        event:FireServer()
+                        task.wait(config.settime)
+                        rspl(localPlayer)
+                    end
                 end)
             end
         end
     end
 end
+
 
 AutoFarm:AddToggle({
     Name = "Auto Farm",
@@ -200,11 +287,13 @@ Anti:AddToggle({
     Callback = function(state)
         config.afk = state
         if config.afk then
-            cuser = game:GetService("Players").LocalPlayer.Idled:Connect(function()
-                local active = game:GetService("VirtualUser")
-                active:CaptureController()
-                active:ClickButton2(Vector2.new())
-            end)
+            if not cuser then
+                cuser = game:GetService("Players").LocalPlayer.Idled:Connect(function()
+                    local active = game:GetService("VirtualUser")
+                    active:CaptureController()
+                    active:ClickButton2(Vector2.new())
+                end)
+            end
         else
             if cuser then
                 cuser:Disconnect()
@@ -224,3 +313,4 @@ OrionLib:Init()
 else
 game.Players.LocalPlayer:Kick("Error : Game Not Supported")
 end
+
