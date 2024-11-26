@@ -291,8 +291,6 @@ local Anti = Tab3:AddSection({
     Name = "Anti"
 })
 
-local cuser 
-
 Anti:AddToggle({
     Name = "AFK",
     Default = false,
