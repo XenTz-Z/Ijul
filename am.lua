@@ -376,8 +376,22 @@ Boss:AddToggle({
     getgenv().Farm2 = Fm2
 end})
 
-Mon:AddSection({"Auto Farm Monster"})
-Mon:AddDropdown({
+local SeaBeast = Main:AddSection({ 
+    Name = "SeaBeast"
+})
+
+SeaBeast:AddToggle({
+  Name = "Auto SeaBeast",
+  Default = false,
+  Callback = function(Se)
+    getgenv().Sea = Se
+end})
+
+local Monster = Mon:AddSection({ 
+    Name = "Auto Farm Monster"
+})
+
+Monster:AddDropdown({
     Name = "Select Monster",
     Description = "",
     Options = Mon,
@@ -386,23 +400,19 @@ Mon:AddDropdown({
     Callback = function(FMo)
     getgenv().Monster = FMo
 end})
-Mon:AddToggle({
+
+Monster:AddToggle({
   Name = "Auto Monster",
   Default = false,
   Callback = function(MON)
     getgenv().MoS = MON
 end})
 
-Main:AddSection({"SeaBeast"})
-Main:AddToggle({
-  Name = "Auto SeaBeast",
-  Default = false,
-  Callback = function(Se)
-    getgenv().Sea = Se
-end})
+local UpStats = Stats:AddSection({ 
+    Name = "Up Stats"
+})
 
-Stats:AddSection({"Up Stats"})
-Stats:AddToggle({
+UpStats:AddToggle({
   Name = "Strength",
   Default = false,
   Callback = function(Strength)
@@ -411,7 +421,8 @@ Stats:AddToggle({
       UpStats("Strength")
     end
 end})
-Stats:AddToggle({
+
+UpStats:AddToggle({
   Name = "Durability",
   Default = false,
   Callback = function(Durability)
@@ -420,7 +431,8 @@ Stats:AddToggle({
       UpStats("Durability")
     end
 end})
-Stats:AddToggle({
+
+UpStats:AddToggle({
   Name = "Sword",
   Default = false,
   Callback = function(Sword)
@@ -429,7 +441,8 @@ Stats:AddToggle({
       UpStats("Sword")
     end
 end})
-Stats:AddToggle({
+
+UpStats:AddToggle({
   Name = "Devilfruit",
   Default = false,
   Callback = function(Devilfruit)
@@ -438,7 +451,8 @@ Stats:AddToggle({
       UpStats("Devilfruit")
     end
 end})
-Stats:AddToggle({
+
+UpStats:AddToggle({
   Name = "Special",
   Default = false,
   Callback = function(Special)
@@ -448,8 +462,11 @@ Stats:AddToggle({
     end
 end})
 
-Teleport:AddSection({"Teleport Island"})
-Teleport:AddDropdown({
+local TPIsland = Teleport:AddSection({
+    Name = "Teleport Island"
+})
+
+TPIsland:AddDropdown({
     Name = "Select Island",
     Description = "",
     Options = Map,
@@ -459,13 +476,19 @@ Teleport:AddDropdown({
     getgenv().SeeMap = Val
 end
 })
-Teleport:AddButton({"Teleport Island", function()
-   TP(game.workspace.Map.SpawnLocation[getgenv().SeeMap].CFrame * CFrame.new(0,10,0))
-end
+
+TPIsland:AddButton({
+    Name = "Teleport Island", 
+    Callback = function()
+        TP(game.workspace.Map.SpawnLocation[getgenv().SeeMap].CFrame * CFrame.new(0,10,0))
+    end
 })
 
-Teleport:AddSection({"Teleport NPC"})
-Teleport:AddDropdown({
+local TPNPC = Teleport:AddSection({ 
+    Name = "Teleport NPC"
+})
+
+TPNPC:AddDropdown({
     Name = "Select NPC",
     Description = "",
     Options = NPC,
@@ -475,7 +498,8 @@ Teleport:AddDropdown({
     getgenv().SeeNPC = Valu
 end
 })
-Teleport:AddButton({"Teleport NPC", function()
+
+TPNPC:AddButton({"Teleport NPC", function()
     for _, v in pairs(workspace.Map.NPC:GetChildren()) do
         if v.Name == getgenv().SeeNPC then
             TP(v.HumanoidRootPart.CFrame * CFrame.new(0, 0, 3))
@@ -484,25 +508,31 @@ Teleport:AddButton({"Teleport NPC", function()
 end
 })
 
-Item:AddButton({"Redeem all Code", function()
+local ARD = Item:AddSection({
+    Name = "Redeem & Rd"
+})
+
+ARD:AddButton({"Redeem all Code", function()
     __RedeemCode()
 end})
-Item:AddSection({"Random"})
-Item:AddToggle({
+
+ARD:AddToggle({
   Name = "Auto Random Item[Gem]",
   Default = false,
   Callback = function(Ran)
     getgenv().Auto = Ran
 end
 })
-Item:AddToggle({
+
+ARD:AddToggle({
   Name = "Auto Random Item[Money]",
   Default = false,
   Callback = function(Ran2)
     getgenv().Auto2 = Ran2
 end
 })
-Item:AddToggle({
+
+ARD:AddToggle({
   Name = "Auto Random Family",
   Default = false,
   Callback = function(Fmm)
@@ -512,7 +542,8 @@ game:GetService("ReplicatedStorage").Events.SpinFamily:FireServer("Normal")
     end
 end
 })
-Item:AddToggle({
+
+ARD:AddToggle({
   Name = "Auto Random Traits",
   Default = false,
   Callback = function(Race)
@@ -522,7 +553,8 @@ game:GetService("ReplicatedStorage").Events.SpinTrait:FireServer("Normal")
     end
 end
 })
-Item:AddToggle({
+
+ARD:AddToggle({
   Name = "Auto Collect Chest",
   Default = false,
   Callback = function(Ch)
@@ -530,11 +562,13 @@ Item:AddToggle({
 end
 })
 
-Misc:AddSection({"Anti AFK"})
+local Setting = Misc:AddSection({
+    Name = "Setting"
+})
 
 local cuser 
 
-Misc:AddToggle({
+Setting:AddToggle({
   Name = "AFK",
   Description = ""
   Default = false,
@@ -558,9 +592,9 @@ Misc:AddToggle({
     end 
 })
 
-Misc:AddSection({"Select Weapon"})
+Setting:AddSection({"Select Weapon"})
 
-Misc:AddDropdown({
+Setting:AddDropdown({
     Name = "Select Weapon",
     Description = "",
     Options = Wea,
@@ -571,26 +605,21 @@ Misc:AddDropdown({
     end
 })
 
-
-
-Misc:AddSection({"One Shot"})
-Misc:AddToggle({
+Setting:AddToggle({
   Name = "One Shot Boss",
   Default = false,
   Callback = function(Ki)
     getgenv().Kill = Ki
 end
 })
-Misc:AddToggle({
+
+Setting:AddToggle({
   Name = "One Shot Monster",
   Default = false,
   Callback = function(Ki2)
     getgenv().Kill2 = Ki2
 end
 })
-
-
-
 
 
 
