@@ -14,7 +14,7 @@ OrionLib:MakeNotification({
 local Window = OrionLib:MakeWindow({ 
     Name = "Ijul Piece 2 | Hao Modder", 
     SaveConfig = true, 
-    ConfigFolder = "XIExV1.0.2", 
+    ConfigFolder = "XIETESTxV1.0.2", 
     IntroText = "script farm", 
     IntroIcon = "rbxthumb://type=Asset&id=77349212873128&w=150&h=150" 
 })
@@ -62,29 +62,15 @@ Items:AddDropdown({
 end 
 })
 
--- function atoch
-
-local UIS = game:GetService("UserInputService") 
-local VirtualInputManager = game:GetService("VirtualInputManager") 
-local RunService = game:GetService("RunService") 
-
-local function pressKeyE()
-    VirtualInputManager:SendKeyEvent(true, Enum.KeyCode.E, false, game) 
-    wait(0.1) 
-    VirtualInputManager:SendKeyEvent(false, Enum.KeyCode.E, false, game) 
-end
-
 Items:AddButton({
 	Name = "Teleport",
 	Callback = function()
         if config.sukunaskill then
             game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(1061.43738, 92.1607361, 101.183472, -0.697700858, 0.0441585705, 0.715026915, 0.125600129, 0.990178764, 0.0614053048, -0.705292881, 0.132650018, -0.69639492) 
-            task.wait(1)
-            pressKeyE()
+            game.Players.LocalPlayer.Character.Humanoid:EquipTool(game:GetService("Players").LocalPlayer.Backpack:FindFirstChild("Sukuna"))
         elseif config.iceskill then
             game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-2644.43213, 4.73413086, -483.230469, -0.62928617, 0, 0.777173758, 0, 1, 0, -0.777173758, 0, -0.62928617)
-            task.wait(1)
-            pressKeyE()
+            game.Players.LocalPlayer.Character.Humanoid:EquipTool(game:GetService("Players").LocalPlayer.Backpack:FindFirstChild("IceAwakening"))
         end     
     end
 })
@@ -99,6 +85,8 @@ ChangeTime:AddParagraph("Time Default", "Sukuna: 33s - SnowIsland | Ice Awakenin
 ChangeTime:AddTextbox({
     Name = "Second",
     Default = "33",
+    Save = false,
+    Flag = "second",
     TextDisappear = false, 
     Callback = function(input)
         local newTime = tonumber(input) 
@@ -249,6 +237,8 @@ end
 AutoFarm:AddToggle({
     Name = "Auto Farm",
     Default = false,
+    Save = false,
+    Flag = "autofarm",
     Callback = function(state)
         autofarm = state
         if autofarm then
@@ -275,6 +265,8 @@ local AutoTrait = Tab2:AddSection({
 AutoTrait:AddToggle({
     Name = "Auto Trait",
     Default = false,
+    Save = false,
+    Flag = "autotrait",
     Callback = function(state)
         config.atrait = state 
         if config.atrait then
