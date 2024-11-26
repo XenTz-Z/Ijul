@@ -146,7 +146,7 @@ GetItem:AddDropdown({
     Name = "Select",
     Description = "Equip",
     Options = {"Sukuna", "Ice Awakening"},
-    Default = nil,
+    Default = "",
     Flag = "sItem_Equip",
     Callback = function(selected)
     if selected == "Sukuna" then
@@ -194,7 +194,7 @@ GetItem:GetItem({
     Name = "Island Select",
     Description = "Snow Island 1 - Require: Sukuna | Snow Island 2 - Require: Ice Awakening",
     Options = {"Windmill Island", "Snow Island 1", "Snow Island 2", "Abandoned Snow Island"},
-    Default = nil,
+    Default = "",
     Flag = "island_select",
     Callback = function(selected)
         if selected then 
@@ -342,7 +342,7 @@ Boss:AddDropdown({
     Name = "Select Spawn",
     Description = "",
     Options = {"Currency","Item"},
-    Default = nil,
+    Default = "",
     Flag = "dropdown_test",
     Callback = function(SW)
     getgenv().SelSpawn = SW
@@ -353,7 +353,7 @@ Boss:AddDropdown({
     Name = "Select Boss",
     Description = "",
     Options = NameBoss,
-    Default = nil,
+    Default = "",
     Flag = "dropdown_test",
     Callback = function(SW2)
     getgenv().SelSpawn2 = SW2
@@ -395,7 +395,7 @@ Monster:AddDropdown({
     Name = "Select Monster",
     Description = "",
     Options = Mon,
-    Default = nil,
+    Default = "",
     Flag = "dropdown_test",
     Callback = function(FMo)
     getgenv().Monster = FMo
@@ -470,7 +470,7 @@ TPIsland:AddDropdown({
     Name = "Select Island",
     Description = "",
     Options = Map,
-    Default = nil,
+    Default = "",
     Flag = "dropdown_test",
     Callback = function(Val)
     getgenv().SeeMap = Val
@@ -492,7 +492,7 @@ TPNPC:AddDropdown({
     Name = "Select NPC",
     Description = "",
     Options = NPC,
-    Default = nil,
+    Default = "",
     Flag = "dropdown_test",
     Callback = function(Valu)
     getgenv().SeeNPC = Valu
@@ -598,7 +598,7 @@ Setting:AddDropdown({
     Name = "Select Weapon",
     Description = "",
     Options = Wea,
-    Default = nil,
+    Default = "",
     Flag = "dropdown_test",
     Callback = function(vbm)
     getgenv().Weapon = vbm
