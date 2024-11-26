@@ -305,7 +305,7 @@ Anti:AddToggle({
                 cuser = game:GetService("Players").LocalPlayer.Idled:Connect(function()
                     local active = game:GetService("VirtualUser")
                     active:CaptureController()
-                    active:ClickButton2(Vector2.new(9999999, 99999999))
+                    active:ClickButton2(Vector2.new())
                 end)
             end
         else
