@@ -14,7 +14,7 @@ OrionLib:MakeNotification({
 local Window = OrionLib:MakeWindow({ 
     Name = "Ijul Piece 2 | Hao Modder", 
     SaveConfig = true, 
-    ConfigFolder = "XIETESTxV1.0.2", 
+    ConfigFolder = "XIExV1.0.2", 
     IntroText = "script farm", 
     IntroIcon = "rbxthumb://type=Asset&id=77349212873128&w=150&h=150" 
 })
