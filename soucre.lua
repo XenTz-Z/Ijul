@@ -301,20 +301,9 @@ Anti:AddToggle({
     Callback = function(state)
         config.afk = state
         if config.afk then
-            if not cuser then
-                cuser = game:GetService("Players").LocalPlayer.Idled:Connect(function()
-                    local active = game:GetService("VirtualUser")
-                    active:CaptureController()
-                    active:ClickButton2(Vector2.new())
-                end)
-            end
-        else
-            if cuser then
-                cuser:Disconnect()
-                cuser = nil
-            end
+            loadstring(game:HttpGet(('https://raw.githubusercontent.com/Xub19/xtl/refs/heads/main/antiafk.lua')))()
         end
-    end 
+    end
 })
 
 
