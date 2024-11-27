@@ -1,5 +1,5 @@
-local OrionLib = loadstring(game:HttpGet(('https://raw.githubusercontent.com/XenTz-Z/Orion/refs/heads/main/source')))()
 if tostring(game.PlaceId) == "18688206652" then
+local OrionLib = loadstring(game:HttpGet(('https://raw.githubusercontent.com/XenTz-Z/Orion/refs/heads/main/source')))()
 print("Ijul Piece 2 | Author Code: XIE")
   
 OrionLib:MakeNotification({ 
@@ -291,8 +291,8 @@ Anti:AddToggle({
     end
 })
 
-OrionLib:Init()
 else
-OrionLib:Destroy()
 game.Players.LocalPlayer:Kick("Error : Game Not Supported")
 end
+
+OrionLib:Init()
