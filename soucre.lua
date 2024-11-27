@@ -24,12 +24,12 @@ local Tab1 = Window:MakeTab({
 
 local Tab2 = Window:MakeTab({
 	Name = "Other",
-	Icon = "robot"
+	Icon = "gem"
 })
 
 local Tab3 = Window:MakeTab({
 	Name = "Misc",
-	Icon = "setting"
+	Icon = "settings"
 })
 
 local Items = Tab1:AddSection({
