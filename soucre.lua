@@ -1,9 +1,7 @@
-if tostring(game.PlaceId) == "18688206652" then
-    
-print("Ijul Piece 2 | Author Code: XIE")
-
 local OrionLib = loadstring(game:HttpGet(('https://raw.githubusercontent.com/XenTz-Z/Orion/refs/heads/main/source')))()
-    
+
+print("Ijul Piece 2 | Author Code: XIE")
+  
 OrionLib:MakeNotification({ 
     Name = "Ijul Piece 2", 
     Content = "by XIE and Hao Modder", 
@@ -21,13 +19,22 @@ local Window = OrionLib:MakeWindow({
 
 local Tab1 = Window:MakeTab({
 	Name = "Main",
-	Icon = "rbxassetid://10723407389"
+	Icon = "home"
+})
+
+local Tab2 = Window:MakeTab({
+	Name = "Other",
+	Icon = "robot"
+})
+
+local Tab3 = Window:MakeTab({
+	Name = "Misc",
+	Icon = "setting"
 })
 
 local Items = Tab1:AddSection({
 	Name = "Items"
 })
-
 
 -- all
 
@@ -140,8 +147,6 @@ AutoFarm:AddDropdown({
 	end 
 })
 
-
-
 local Players = game:GetService("Players")
 
 local function rspl(player)
@@ -158,8 +163,6 @@ Players.PlayerAdded:Connect(function(player)
         rspl(player)
     end)
 end)
-
-
 
 local function attack()
     local localPlayer = Players.LocalPlayer
@@ -233,7 +236,6 @@ local function attack()
     end
 end
 
-
 AutoFarm:AddToggle({
     Name = "Auto Farm",
     Default = false,
@@ -250,12 +252,6 @@ AutoFarm:AddToggle({
             end)
         end 
     end 
-})
-
-
-local Tab2 = Window:MakeTab({
-	Name = "Other",
-	Icon = "rbxassetid://7733916988"
 })
 
 local AutoTrait = Tab2:AddSection({
@@ -278,15 +274,6 @@ AutoTrait:AddToggle({
     end    
 })
 
-
-
-
-
-local Tab3 = Window:MakeTab({
-	Name = "Misc",
-	Icon = "rbxassetid://10734950309"
-})
-
 local Anti = Tab3:AddSection({
     Name = "Anti"
 })
@@ -304,14 +291,4 @@ Anti:AddToggle({
     end
 })
 
-
-
-
-
 OrionLib:Init()
-
-
-else
-game.Players.LocalPlayer:Kick("Error : Game Not Supported")
-end
-
