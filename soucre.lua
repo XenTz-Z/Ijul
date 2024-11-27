@@ -24,7 +24,7 @@ local Tab1 = Window:MakeTab({
 
 local Tab2 = Window:MakeTab({
 	Name = "Other",
-	Icon = "gem"
+	Icon = "more-horizontal"
 })
 
 local Tab3 = Window:MakeTab({
