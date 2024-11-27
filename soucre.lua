@@ -291,8 +291,7 @@ Anti:AddToggle({
     end
 })
 
+OrionLib:Init()
 else
 game.Players.LocalPlayer:Kick("Error : Game Not Supported")
 end
-
-OrionLib:Init()
