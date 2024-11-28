@@ -1,7 +1,48 @@
 if tostring(game.PlaceId) == "18688206652" then
-local OrionLib = loadstring(game:HttpGet(('https://raw.githubusercontent.com/XenTz-Z/Orion/refs/heads/main/source')))()
-print("Ijul Piece 2 | Author Code: XIE")
-  
+
+-- all
+
+local config = {
+    settime = 33,
+    sukunaskill = false,
+    iceskill = false,
+    windmill = false,
+    snowisland1 = false,
+    snowisland2 = false,
+    abandoned = false,
+    atrait = false,
+    afk = false  
+}
+
+-- >
+
+local Players = game:GetService("Players")
+
+local function rspl(player)
+    if player and player.Character then
+        local humanoid = player.Character:FindFirstChildOfClass("Humanoid")
+        if humanoid then
+            humanoid.Health = 0
+        end
+    end
+end
+
+Players.PlayerAdded:Connect(function(player)
+    player.CharacterAdded:Connect(function()
+        rspl(player)
+    end)
+end)
+
+local OrionLib = loadstring(game:HttpGet(("https://raw.githubusercontent.com/XenTz-Z/Orion/refs/heads/main/source")))()
+
+local Window = OrionLib:MakeWindow({ 
+    Name = "Ijul Piece 2 | Hao Modder", 
+    SaveConfig = true, 
+    ConfigFolder = "XIExV1.0.3", 
+    IntroText = "script farm", 
+    IntroIcon = "rbxthumb://type=Asset&id=77349212873128&w=150&h=150" 
+})
+
 OrionLib:MakeNotification({ 
     Name = "Ijul Piece 2", 
     Content = "by XIE and Hao Modder", 
@@ -9,13 +50,7 @@ OrionLib:MakeNotification({
     Time = 5 
 })
 
-local Window = OrionLib:MakeWindow({ 
-    Name = "Ijul Piece 2 | Hao Modder", 
-    SaveConfig = true, 
-    ConfigFolder = "XIExV1.0.2", 
-    IntroText = "script farm", 
-    IntroIcon = "rbxthumb://type=Asset&id=77349212873128&w=150&h=150" 
-})
+print("Ijul Piece 2 | Author Code: XIE")
 
 local Tab1 = Window:MakeTab({
 	Name = "Main",
@@ -35,22 +70,6 @@ local Tab3 = Window:MakeTab({
 local Items = Tab1:AddSection({
 	Name = "Items"
 })
-
--- all
-
-local config = {
-    settime = 33,
-    sukunaskill = false,
-    iceskill = false,
-    windmill = false,
-    snowisland1 = false,
-    snowisland2 = false,
-    abandoned = false,
-    atrait = false,
-    afk = false  
-}
-
--- >
 
 Items:AddDropdown({
 	Name = "Select",
@@ -82,8 +101,7 @@ Items:AddButton({
     end
 })
 
-
-local ChangeTime = Tab1:AddSection({
+local ChangeTime = Tab1:AddSection({ 
     Name = "Change Time"
 })
 
@@ -146,23 +164,6 @@ AutoFarm:AddDropdown({
         end
 	end 
 })
-
-local Players = game:GetService("Players")
-
-local function rspl(player)
-    if player and player.Character then
-        local humanoid = player.Character:FindFirstChildOfClass("Humanoid")
-        if humanoid then
-            humanoid.Health = 0
-        end
-    end
-end
-
-Players.PlayerAdded:Connect(function(player)
-    player.CharacterAdded:Connect(function()
-        rspl(player)
-    end)
-end)
 
 local function attack()
     local localPlayer = Players.LocalPlayer
@@ -286,12 +287,13 @@ Anti:AddToggle({
     Callback = function(state)
         config.afk = state
         if config.afk then
-            loadstring(game:HttpGet(('https://raw.githubusercontent.com/Xub19/xtl/refs/heads/main/antiafk.lua')))()
+            loadstring(game:HttpGet(("https://raw.githubusercontent.com/Xub19/xtl/refs/heads/main/antiafk.lua")))()
         end
     end
 })
 
 OrionLib:Init()
+
 else
 game.Players.LocalPlayer:Kick("Error : Game Not Supported")
 end
