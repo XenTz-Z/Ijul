@@ -1,6 +1,5 @@
 if tostring(game.PlaceId) == "18688206652" then
-
--- all
+    print("Ijul Piece 2 | Script Farm")
 
 local config = {
     settime = 12,
@@ -13,8 +12,6 @@ local config = {
     atrait = false,
     afk = false  
 }
-
--- >
 
 local Players = game:GetService("Players")
 
@@ -54,34 +51,13 @@ local Window = OrionLib:MakeWindow({
     IntroIcon = "rbxthumb://type=Asset&id=77349212873128&w=150&h=150"
 })
 
-OrionLib:MakeNotification({ 
-    Title = "Ijul Piece 2", 
-    Content = "by XIE and Hao Modder", 
-    Image = "rbxthumb://type=Asset&id=104004670815583&w=150&h=150", 
-    Time = 5 
-})
+local Tabs = {
+    Main = Window:MakeTab({ Name = "Main", Icon = "home" }),
+    Other = Window:MakeTab({ Name = "Other", Icon = "more-horizontal" }),
+    Misc = Window:MakeTab({ Name = "Misc", Icon = "settings" })
+}
 
-print("Ijul Piece 2 | Author Code: XIE")
-
-local Tab1 = Window:MakeTab({
-	Name = "Main",
-	Icon = "home",
-    PremiumOnly = false
-})
-
-local Tab2 = Window:MakeTab({
-	Name = "Other",
-	Icon = "more-horizontal",
-    PremiumOnly = false
-})
-
-local Tab3 = Window:MakeTab({
-	Name = "Misc",
-	Icon = "settings",
-    PremiumOnly = false
-})
-
-local Items = Tab1:AddSection({
+local Items = Tabs.Main:AddSection({
 	Name = "Items"
 })
 
@@ -139,8 +115,6 @@ local AutoFarm = Tab1:AddSection({
 })
 
 AutoFarm:AddParagraph("Island Select", "Snow Island 1 - Require: Sukuna | Snow Island 2 - Require: Ice Awakening")
-
--- tp island 
 
 AutoFarm:AddDropdown({
 	Name = "Island Select",
@@ -263,7 +237,7 @@ AutoFarm:AddToggle({
     end 
 })
 
-local AutoTrait = Tab2:AddSection({
+local AutoTrait = Tabs.Other:AddSection({
 	Name = "Spin Trait"
 })
 
@@ -282,7 +256,7 @@ AutoTrait:AddToggle({
     end    
 })
 
-local Anti = Tab3:AddSection({
+local Anti = Tabs.Misc:AddSection({
     Name = "Anti"
 })
 
@@ -298,8 +272,17 @@ Anti:AddToggle({
     end
 })
 
+
+OrionLib:MakeNotification({ 
+    Title = "Ijul Piece 2", 
+    Content = "by XIE and Hao Modder", 
+    Image = "rbxthumb://type=Asset&id=104004670815583&w=150&h=150", 
+    Time = 5 
+})
+
 OrionLib:Init()
 
 else
-game.Players.LocalPlayer:Kick("Error : Game Not Supported")
+    game.Players.LocalPlayer:Kick("Error : Game Not Supported")
+
 end
