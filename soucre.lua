@@ -57,6 +57,13 @@ local Tabs = {
     Misc = Window:MakeTab({ Name = "Misc", Icon = "settings" })
 }
 
+OrionLib:MakeNotification({ 
+    Title = "Ijul Piece 2", 
+    Content = "by XIE and Hao Modder", 
+    Image = "rbxthumb://type=Asset&id=104004670815583&w=150&h=150", 
+    Time = 5 
+})
+
 local Items = Tabs.Main:AddSection({
 	Name = "Items"
 })
@@ -88,7 +95,7 @@ Items:AddButton({
     end
 })
 
-local ChangeTime = Tab1:AddSection({ 
+local ChangeTime = Tabs.Main:AddSection({ 
     Name = "Change Time"
 })
 
@@ -110,7 +117,7 @@ ChangeTime:AddTextbox({
     end    
 })
 
-local AutoFarm = Tab1:AddSection({
+local AutoFarm = Tabs.Main:AddSection({
     Name = "Farm & Teleport Island"
 })
 
@@ -270,14 +277,6 @@ Anti:AddToggle({
             loadstring(game:HttpGet(("https://raw.githubusercontent.com/Xub19/xtl/refs/heads/main/antiafk.lua")))()
         end
     end
-})
-
-
-OrionLib:MakeNotification({ 
-    Title = "Ijul Piece 2", 
-    Content = "by XIE and Hao Modder", 
-    Image = "rbxthumb://type=Asset&id=104004670815583&w=150&h=150", 
-    Time = 5 
 })
 
 OrionLib:Init()
