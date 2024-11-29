@@ -79,14 +79,14 @@ Items:AddDropdown({
     Flag = "select_nv",
 	Options = {"Sukuna", "Ice Awakening"},
 	Callback = function(selected)
-    if selected == "Sukuna" then
-        config.sukunaskill = true
-        config.iceskill = false
-    elseif selected == "Ice Awakening" then
-        config.sukunaskill = false
-        config.iceskill = true
-    end
-end 
+        if selected == "Sukuna" then
+            config.sukunaskill = true
+            config.iceskill = false
+        elseif selected == "Ice Awakening" then
+            config.sukunaskill = false
+            config.iceskill = true
+        end
+    end 
 })
 
 Items:AddButton({
