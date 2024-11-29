@@ -3,7 +3,7 @@ if tostring(game.PlaceId) == "18688206652" then
 -- all
 
 local config = {
-    settime = 33,
+    settime = 12,
     sukunaskill = false,
     iceskill = false,
     windmill = false,
@@ -37,14 +37,15 @@ local OrionLib = loadstring(game:HttpGet(("https://raw.githubusercontent.com/Xen
 
 local Window = OrionLib:MakeWindow({ 
     Name = "Ijul Piece 2 | Hao Modder", 
-    SaveConfig = true, 
-    ConfigFolder = "XIExV1.0.3", 
+    HidePremium = false,
+    SaveConfig = false,
+    IntroEnabled = true,
     IntroText = "script farm", 
-    IntroIcon = "rbxthumb://type=Asset&id=77349212873128&w=150&h=150" 
+    IntroIcon = "rbxthumb://type=Asset&id=77349212873128&w=150&h=150"
 })
 
 OrionLib:MakeNotification({ 
-    Name = "Ijul Piece 2", 
+    Title = "Ijul Piece 2", 
     Content = "by XIE and Hao Modder", 
     Image = "rbxthumb://type=Asset&id=104004670815583&w=150&h=150", 
     Time = 5 
@@ -54,17 +55,20 @@ print("Ijul Piece 2 | Author Code: XIE")
 
 local Tab1 = Window:MakeTab({
 	Name = "Main",
-	Icon = "home"
+	Icon = "home",
+    PremiumOnly = false
 })
 
 local Tab2 = Window:MakeTab({
 	Name = "Other",
-	Icon = "more-horizontal"
+	Icon = "more-horizontal",
+    PremiumOnly = false
 })
 
 local Tab3 = Window:MakeTab({
 	Name = "Misc",
-	Icon = "settings"
+	Icon = "settings",
+    PremiumOnly = false
 })
 
 local Items = Tab1:AddSection({
@@ -74,7 +78,6 @@ local Items = Tab1:AddSection({
 Items:AddDropdown({
 	Name = "Select",
 	Default = "",
-    Save = true,
     Flag = "item_equip",
 	Options = {"Sukuna", "Ice Awakening"},
 	Callback = function(selected)
@@ -105,12 +108,11 @@ local ChangeTime = Tab1:AddSection({
     Name = "Change Time"
 })
 
-ChangeTime:AddParagraph("Time Default", "Sukuna: 33s - SnowIsland | Ice Awakening: 13s - AbondedSnowIsland")
+ChangeTime:AddParagraph("Time Default", "Sukuna: 12s - SnowIsland | Ice Awakening: 13s - AbondedSnowIsland")
 
 ChangeTime:AddTextbox({
     Name = "Second",
-    Default = "33",
-    Save = false,
+    Default = "12",
     Flag = "second",
     TextDisappear = false, 
     Callback = function(input)
@@ -135,7 +137,6 @@ AutoFarm:AddParagraph("Island Select", "Snow Island 1 - Require: Sukuna | Snow I
 AutoFarm:AddDropdown({
 	Name = "Island Select",
 	Default = "",
-    Save = true,
     Flag = "island_select",
 	Options = {"Windmill Island", "Snow Island 1", "Snow Island 2", "Abandoned Snow Island"},
 	Callback = function(selected)
@@ -240,7 +241,6 @@ end
 AutoFarm:AddToggle({
     Name = "Auto Farm",
     Default = false,
-    Save = false,
     Flag = "autofarm",
     Callback = function(state)
         autofarm = state
@@ -262,7 +262,6 @@ local AutoTrait = Tab2:AddSection({
 AutoTrait:AddToggle({
     Name = "Auto Trait",
     Default = false,
-    Save = false,
     Flag = "autotrait",
     Callback = function(state)
         config.atrait = state 
@@ -282,7 +281,6 @@ local Anti = Tab3:AddSection({
 Anti:AddToggle({
     Name = "AFK",
     Default = false,
-    Save = true,
     Flag = "afk",
     Callback = function(state)
         config.afk = state
