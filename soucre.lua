@@ -45,7 +45,7 @@ local OrionLib = loadstring(game:HttpGet(("https://raw.githubusercontent.com/Xen
 OrionLib:MakeNotification({
     Title = "Ijul Piece 2", 
     Content = "by XIE and Hao Modder", 
-    Image = "rbxthumb://type=Asset&id=104004670815583&w=150&h=150", 
+    Image = "rbxassetid://73746432663634", 
     Time = 10
 })
 
@@ -56,7 +56,7 @@ local Window = OrionLib:MakeWindow({
     ConfigFolder = "XIEV1.0.5",
     IntroEnabled = true,
     IntroText = "script farm", 
-    IntroIcon = "rbxthumb://type=Asset&id=77349212873128&w=150&h=150",
+    IntroIcon = "rbxassetid://114528428314848",
     Icon = "rbxassetid://75692565817319",
     CloseCallback = function()
     end
@@ -175,6 +175,7 @@ local function attack()
             if humanoid and skill and event then
                 pcall(function()
                     if config.windmill then
+                        task.wait(2)
                         character.HumanoidRootPart.CFrame = CFrame.new(-340.595551, 28.6830673, 234.98175, 1, 0, 0, 0, 1, 0, 0, 0, 1)
                         task.wait(2.5)
                         humanoid:EquipTool(skill)
@@ -182,6 +183,7 @@ local function attack()
                         task.wait(config.settime)
                         rspl(localPlayer)
                     elseif config.snowisland1 then
+                        task.wait(2)
                         character.HumanoidRootPart.CFrame = CFrame.new(-2411.69824, 19.8741894, -598.203064, 1, 0, 0, 0, 1, 0, 0, 0, 1)
                         task.wait(2.5)
                         humanoid:EquipTool(skill)
@@ -189,6 +191,7 @@ local function attack()
                         task.wait(config.settime)
                         rspl(localPlayer)
                     elseif config.abandoned then
+                        task.wait(2)
                         character.HumanoidRootPart.CFrame = CFrame.new(2600.07031, 23.3707905, 1980.55969, 0.848060429, 0, 0.529899538, 0, 1, 0, -0.529899538, 0, 0.848060429)
                         task.wait(2.5)
                         humanoid:EquipTool(skill)
@@ -207,6 +210,7 @@ local function attack()
             if humanoid and skill and event then
                 pcall(function()
                     if config.windmill then
+                        task.wait(2)
                         character.HumanoidRootPart.CFrame = CFrame.new(-340.595551, 28.6830673, 234.98175, 1, 0, 0, 0, 1, 0, 0, 0, 1)
                         task.wait(2.5)
                         humanoid:EquipTool(skill)
@@ -214,6 +218,7 @@ local function attack()
                         task.wait(config.settime)
                         rspl(localPlayer)
                     elseif config.snowisland2 then
+                        task.wait(2)
                         character.HumanoidRootPart.CFrame = CFrame.new(-2570.79053, 20.1839676, -589.001343, 0, 0, -1, 0, 1, 0, 1, 0, 0)
                         task.wait(2.5)
                         humanoid:EquipTool(skill)
@@ -221,6 +226,7 @@ local function attack()
                         task.wait(config.settime)
                         rspl(localPlayer)
                     elseif config.abandoned then
+                        task.wait(2)
                         character.HumanoidRootPart.CFrame = CFrame.new(2600.07031, 23.3707905, 1980.55969, 0.848060429, 0, 0.529899538, 0, 1, 0, -0.529899538, 0, 0.848060429)
                         task.wait(2.5)
                         humanoid:EquipTool(skill)
