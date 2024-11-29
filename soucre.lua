@@ -71,7 +71,6 @@ local Items = Tabs.Main:AddSection({
 Items:AddDropdown({
 	Name = "Select",
 	Default = "",
-    Flag = "item_equip",
 	Options = {"Sukuna", "Ice Awakening"},
 	Callback = function(selected)
     if selected == "Sukuna" then
@@ -104,7 +103,6 @@ ChangeTime:AddParagraph("Time Default", "Sukuna: 12s - SnowIsland | Ice Awakenin
 ChangeTime:AddTextbox({
     Name = "Second",
     Default = "12",
-    Flag = "second",
     TextDisappear = false, 
     Callback = function(input)
         local newTime = tonumber(input) 
@@ -126,7 +124,6 @@ AutoFarm:AddParagraph("Island Select", "Snow Island 1 - Require: Sukuna | Snow I
 AutoFarm:AddDropdown({
 	Name = "Island Select",
 	Default = "",
-    Flag = "island_select",
 	Options = {"Windmill Island", "Snow Island 1", "Snow Island 2", "Abandoned Snow Island"},
 	Callback = function(selected)
         if selected then 
@@ -230,7 +227,6 @@ end
 AutoFarm:AddToggle({
     Name = "Auto Farm",
     Default = false,
-    Flag = "autofarm",
     Callback = function(state)
         autofarm = state
         if autofarm then
@@ -251,7 +247,6 @@ local AutoTrait = Tabs.Other:AddSection({
 AutoTrait:AddToggle({
     Name = "Auto Trait",
     Default = false,
-    Flag = "autotrait",
     Callback = function(state)
         config.atrait = state 
         if config.atrait then
@@ -270,7 +265,6 @@ local Anti = Tabs.Misc:AddSection({
 Anti:AddToggle({
     Name = "AFK",
     Default = false,
-    Flag = "afk",
     Callback = function(state)
         config.afk = state
         if config.afk then
