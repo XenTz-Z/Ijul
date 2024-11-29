@@ -45,7 +45,7 @@ local OrionLib = loadstring(game:HttpGet(("https://raw.githubusercontent.com/Xen
 OrionLib:MakeNotification({
     Title = "Ijul Piece 2", 
     Content = "by XIE and Hao Modder", 
-    Image = "rbxassetid://16278245061", 
+    Image = "rbxthumb://type=Asset&id=73746432663634&w=150&h=150", 
     Time = 10
 })
 
@@ -56,8 +56,8 @@ local Window = OrionLib:MakeWindow({
     ConfigFolder = "XIEV1.0.5",
     IntroEnabled = true,
     IntroText = "script farm", 
-    IntroIcon = "rbxassetid://15325715933",
-    Icon = "rbxassetid://7120897394",
+    IntroIcon = "rbxthumb://type=Asset&id=114528428314848&w=150&h=150",
+    Icon = "rbxthumb://type=Asset&id=75692565817319&w=150&h=150",
     CloseCallback = function()
     end
 })
