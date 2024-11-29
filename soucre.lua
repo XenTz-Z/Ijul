@@ -42,6 +42,13 @@ end
 
 local OrionLib = loadstring(game:HttpGet(("https://raw.githubusercontent.com/XenTz-Z/Orion/refs/heads/main/source")))()
 
+OrionLib:MakeNotification({
+    Title = "Ijul Piece 2", 
+    Content = "by XIE and Hao Modder", 
+    Image = "rbxthumb://type=Asset&id=104004670815583&w=150&h=150", 
+    Time = 10
+})
+
 local Window = OrionLib:MakeWindow({ 
     Name = "Ijul Piece 2 | Hao Modder", 
     HidePremium = false,
@@ -56,13 +63,6 @@ local Tabs = {
     Other = Window:MakeTab({ Name = "Other", Icon = "more-horizontal" }),
     Misc = Window:MakeTab({ Name = "Misc", Icon = "settings" })
 }
-
-OrionLib:MakeNotification({ 
-    Title = "Ijul Piece 2", 
-    Content = "by XIE and Hao Modder", 
-    Image = "rbxthumb://type=Asset&id=104004670815583&w=150&h=150", 
-    Time = 5 
-})
 
 local Items = Tabs.Main:AddSection({
 	Name = "Items"
