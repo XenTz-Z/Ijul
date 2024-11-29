@@ -52,16 +52,20 @@ OrionLib:MakeNotification({
 local Window = OrionLib:MakeWindow({ 
     Name = "Ijul Piece 2 | Hao Modder", 
     HidePremium = false,
-    SaveConfig = false,
+    SaveConfig = true,
+    ConfigFolder = "XIEV1.0.5"
     IntroEnabled = true,
     IntroText = "script farm", 
-    IntroIcon = "rbxthumb://type=Asset&id=77349212873128&w=150&h=150"
+    IntroIcon = "rbxthumb://type=Asset&id=77349212873128&w=150&h=150",
+    Icon = "rbxassetid://112735572298019",
+    CloseCallback = function()
+    end
 })
 
 local Tabs = {
-    Main = Window:MakeTab({ Name = "Main", Icon = "home" }),
-    Other = Window:MakeTab({ Name = "Other", Icon = "more-horizontal" }),
-    Misc = Window:MakeTab({ Name = "Misc", Icon = "settings" })
+    Main = Window:MakeTab({ Name = "Main", Icon = "home", PremiumOnly = false }),
+    Other = Window:MakeTab({ Name = "Other", Icon = "more-horizontal", PremiumOnly = false }),
+    Misc = Window:MakeTab({ Name = "Misc", Icon = "settings", PremiumOnly = false })
 }
 
 local Items = Tabs.Main:AddSection({
@@ -71,6 +75,8 @@ local Items = Tabs.Main:AddSection({
 Items:AddDropdown({
 	Name = "Select",
 	Default = "",
+    Save = true,
+    Flag = "select_nv",
 	Options = {"Sukuna", "Ice Awakening"},
 	Callback = function(selected)
     if selected == "Sukuna" then
@@ -103,6 +109,8 @@ ChangeTime:AddParagraph("Time Default", "Sukuna: 12s - SnowIsland | Ice Awakenin
 ChangeTime:AddTextbox({
     Name = "Second",
     Default = "12",
+    Save = true,
+    Flag = "time_dc",
     TextDisappear = false, 
     Callback = function(input)
         local newTime = tonumber(input) 
@@ -124,6 +132,8 @@ AutoFarm:AddParagraph("Island Select", "Snow Island 1 - Require: Sukuna | Snow I
 AutoFarm:AddDropdown({
 	Name = "Island Select",
 	Default = "",
+    Save = true,
+    Flag = "select_island",
 	Options = {"Windmill Island", "Snow Island 1", "Snow Island 2", "Abandoned Snow Island"},
 	Callback = function(selected)
         if selected then 
@@ -226,6 +236,8 @@ end
 
 AutoFarm:AddToggle({
     Name = "Auto Farm",
+    Save = true,
+    Flag = "autof_en",
     Default = false,
     Callback = function(state)
         autofarm = state
@@ -246,6 +258,8 @@ local AutoTrait = Tabs.Other:AddSection({
 
 AutoTrait:AddToggle({
     Name = "Auto Trait",
+    Save = true,
+    Flag = "rd_trait",
     Default = false,
     Callback = function(state)
         config.atrait = state 
@@ -264,6 +278,8 @@ local Anti = Tabs.Misc:AddSection({
 
 Anti:AddToggle({
     Name = "AFK",
+    Save = true,
+    Flag = "antiafk",
     Default = false,
     Callback = function(state)
         config.afk = state
