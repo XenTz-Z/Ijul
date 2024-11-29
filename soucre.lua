@@ -57,7 +57,6 @@ local Window = OrionLib:MakeWindow({
     IntroEnabled = true,
     IntroText = "script farm", 
     IntroIcon = "rbxthumb://type=Asset&id=114528428314848&w=150&h=150",
-    Icon = "rbxthumb://type=Asset&id=75692565817319&w=150&h=150",
     CloseCallback = function()
     end
 })
