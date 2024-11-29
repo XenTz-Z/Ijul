@@ -53,7 +53,7 @@ local Window = OrionLib:MakeWindow({
     Name = "Ijul Piece 2 | Hao Modder", 
     HidePremium = false,
     SaveConfig = true,
-    ConfigFolder = "XIEV1.0.5"
+    ConfigFolder = "XIEV1.0.5",
     IntroEnabled = true,
     IntroText = "script farm", 
     IntroIcon = "rbxthumb://type=Asset&id=77349212873128&w=150&h=150",
