@@ -53,7 +53,7 @@ local Window = OrionLib:MakeWindow({
     Name = "Ijul Piece 2 | Hao Modder", 
     HidePremium = false,
     SaveConfig = true,
-    ConfigFolder = "XIEV1.0.6",
+    ConfigFolder = "XIEV1.1.0",
     IntroText = "script farm", 
     IntroIcon = "rbxthumb://type=Asset&id=114528428314848&w=150&h=150",
     CloseCallback = function()
@@ -280,11 +280,8 @@ local Anti = Tabs.Misc:AddSection({
     Name = "Anti"
 })
 
-Anti:AddToggle({
+Anti:AddButton({
     Name = "AFK",
-    Default = false,
-    Save = false,
-    Flag = "enable_atiafk",
     Callback = function(state)
         config.afk = state
         if config.afk then
