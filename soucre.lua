@@ -53,8 +53,7 @@ local Window = OrionLib:MakeWindow({
     Name = "Ijul Piece 2 | Hao Modder", 
     HidePremium = false,
     SaveConfig = true,
-    ConfigFolder = "XIEV1.0.5",
-    IntroEnabled = true,
+    ConfigFolder = "XIEV1.0.6",
     IntroText = "script farm", 
     IntroIcon = "rbxthumb://type=Asset&id=114528428314848&w=150&h=150",
     CloseCallback = function()
@@ -74,7 +73,7 @@ local Items = Tabs.Main:AddSection({
 Items:AddDropdown({
 	Name = "Select",
 	Default = "",
-    Save = true,
+    Save = false,
     Flag = "select_nv",
 	Options = {"Sukuna", "Ice Awakening"},
 	Callback = function(selected)
@@ -108,7 +107,7 @@ ChangeTime:AddParagraph("Time Default", "Sukuna: 12s - SnowIsland | Ice Awakenin
 ChangeTime:AddTextbox({
     Name = "Second",
     Default = "12",
-    Save = true,
+    Save = false,
     Flag = "time_dc",
     TextDisappear = false, 
     Callback = function(input)
@@ -131,7 +130,7 @@ AutoFarm:AddParagraph("Island Select", "Snow Island 1 - Require: Sukuna | Snow I
 AutoFarm:AddDropdown({
 	Name = "Island Select",
 	Default = "",
-    Save = true,
+    Save = false,
     Flag = "select_island",
 	Options = {"Windmill Island", "Snow Island 1", "Snow Island 2", "Abandoned Snow Island"},
 	Callback = function(selected)
@@ -241,9 +240,9 @@ end
 
 AutoFarm:AddToggle({
     Name = "Auto Farm",
-    Save = true,
-    Flag = "autof_en",
     Default = false,
+    Save = false,
+    Flag = "enable_autofarm",
     Callback = function(state)
         autofarm = state
         if autofarm then
@@ -263,9 +262,9 @@ local AutoTrait = Tabs.Other:AddSection({
 
 AutoTrait:AddToggle({
     Name = "Auto Trait",
-    Save = true,
-    Flag = "rd_trait",
     Default = false,
+    Save = false,
+    Flag = "random_trait",
     Callback = function(state)
         config.atrait = state 
         if config.atrait then
@@ -283,9 +282,9 @@ local Anti = Tabs.Misc:AddSection({
 
 Anti:AddToggle({
     Name = "AFK",
-    Save = true,
-    Flag = "antiafk",
     Default = false,
+    Save = false,
+    Flag = "enable_atiafk",
     Callback = function(state)
         config.afk = state
         if config.afk then
