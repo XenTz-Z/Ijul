@@ -9,8 +9,7 @@ local config = {
     snowisland1 = false,
     snowisland2 = false,
     abandoned = false,
-    atrait = false,
-    afk = false  
+    atrait = false
 }
 
 local Players = game:GetService("Players")
@@ -282,11 +281,8 @@ local Anti = Tabs.Misc:AddSection({
 
 Anti:AddButton({
     Name = "AFK",
-    Callback = function(state)
-        config.afk = state
-        if config.afk then
-            loadstring(game:HttpGet(("https://raw.githubusercontent.com/Xub19/xtl/refs/heads/main/antiafk.lua")))()
-        end
+    Callback = function()
+		loadstring(game:HttpGet(("https://raw.githubusercontent.com/Xub19/xtl/refs/heads/main/antiafk.lua")))()
     end
 })
 
