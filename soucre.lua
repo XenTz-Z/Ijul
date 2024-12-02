@@ -54,9 +54,7 @@ local Window = OrionLib:MakeWindow({
     SaveConfig = true,
     ConfigFolder = "XIEV1.1.0",
     IntroText = "script farm", 
-    IntroIcon = "rbxthumb://type=Asset&id=114528428314848&w=150&h=150",
-    CloseCallback = function()
-    end
+    IntroIcon = "rbxthumb://type=Asset&id=114528428314848&w=150&h=150"
 })
 
 local Tabs = {
