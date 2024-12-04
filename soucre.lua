@@ -1,5 +1,4 @@
 if tostring(game.PlaceId) == "18688206652" then
-    print("Ijul Piece 2 | Script Farm")
 
 local config = {
     settime = 12,
@@ -41,26 +40,19 @@ end
 
 local OrionLib = loadstring(game:HttpGet(("https://raw.githubusercontent.com/XenTz-Z/Orion/refs/heads/main/source")))()
 
-OrionLib:MakeNotification({
-    Title = "Ijul Piece 2", 
-    Content = "by XIE and Hao Modder", 
-    Image = "rbxthumb://type=Asset&id=73746432663634&w=150&h=150", 
-    Time = 10
-})
-
 local Window = OrionLib:MakeWindow({ 
     Name = "Ijul Piece 2 | Hao Modder", 
+    ConfigFolder = "",
+    SaveConfig = false,
     HidePremium = false,
-    SaveConfig = true,
-    ConfigFolder = "XIEV1.1.0",
     IntroText = "script farm", 
     IntroIcon = "rbxthumb://type=Asset&id=114528428314848&w=150&h=150"
 })
 
 local Tabs = {
-    Main = Window:MakeTab({ Name = "Main", Icon = "home", PremiumOnly = false }),
-    Other = Window:MakeTab({ Name = "Other", Icon = "more-horizontal", PremiumOnly = false }),
-    Misc = Window:MakeTab({ Name = "Misc", Icon = "settings", PremiumOnly = false })
+    Main = Window:MakeTab({ Name = "Main" }),
+    Other = Window:MakeTab({ Name = "Other" }),
+    Misc = Window:MakeTab({ Name = "Misc" })
 }
 
 local Items = Tabs.Main:AddSection({
@@ -70,8 +62,6 @@ local Items = Tabs.Main:AddSection({
 Items:AddDropdown({
 	Name = "Select",
 	Default = "",
-    Save = false,
-    Flag = "select_nv",
 	Options = {"Sukuna", "Ice Awakening"},
 	Callback = function(selected)
         if selected == "Sukuna" then
@@ -104,8 +94,6 @@ ChangeTime:AddParagraph("Time Default", "Sukuna: 12s - SnowIsland | Ice Awakenin
 ChangeTime:AddTextbox({
     Name = "Second",
     Default = "12",
-    Save = false,
-    Flag = "time_dc",
     TextDisappear = false, 
     Callback = function(input)
         local newTime = tonumber(input) 
@@ -127,8 +115,6 @@ AutoFarm:AddParagraph("Island Select", "Snow Island 1 - Require: Sukuna | Snow I
 AutoFarm:AddDropdown({
 	Name = "Island Select",
 	Default = "",
-    Save = false,
-    Flag = "select_island",
 	Options = {"Windmill Island", "Snow Island 1", "Snow Island 2", "Abandoned Snow Island"},
 	Callback = function(selected)
         if selected then 
@@ -238,8 +224,6 @@ end
 AutoFarm:AddToggle({
     Name = "Auto Farm",
     Default = false,
-    Save = false,
-    Flag = "enable_autofarm",
     Callback = function(state)
         autofarm = state
         if autofarm then
@@ -260,8 +244,6 @@ local AutoTrait = Tabs.Other:AddSection({
 AutoTrait:AddToggle({
     Name = "Auto Trait",
     Default = false,
-    Save = false,
-    Flag = "random_trait",
     Callback = function(state)
         config.atrait = state 
         if config.atrait then
@@ -288,5 +270,4 @@ OrionLib:Init()
 
 else
     game.Players.LocalPlayer:Kick("Error : Game Not Supported")
-
 end
