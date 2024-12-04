@@ -42,9 +42,7 @@ local OrionLib = loadstring(game:HttpGet(("https://raw.githubusercontent.com/Xen
 
 local Window = OrionLib:MakeWindow({ 
     Name = "Ijul Piece 2 | Hao Modder", 
-    ConfigFolder = "",
     SaveConfig = false,
-    HidePremium = false,
     IntroText = "script farm", 
     IntroIcon = "rbxthumb://type=Asset&id=114528428314848&w=150&h=150"
 })
