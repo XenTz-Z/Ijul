@@ -41,16 +41,17 @@ end
 local OrionLib = loadstring(game:HttpGet(("https://raw.githubusercontent.com/XenTz-Z/Orion/refs/heads/main/source")))()
 
 local Window = OrionLib:MakeWindow({ 
-    Name = "Ijul Piece 2 | Hao Modder", 
+    Name = "XenTz-Z > Ijul Piece 2", 
     SaveConfig = false,
-    IntroText = "script farm", 
-    IntroIcon = "rbxthumb://type=Asset&id=114528428314848&w=150&h=150"
+    IntroText = " ", 
+    IntroIcon = " "
 })
 
 local Tabs = {
-    Main = Window:MakeTab({ Name = "Main" }),
-    Other = Window:MakeTab({ Name = "Other" }),
-    Misc = Window:MakeTab({ Name = "Misc" })
+    Main = Window:MakeTab({ Name = "Main", Icon = "home" }),
+    -- Teleport = Window:MakeTab({ Name = "Teleport", Icon = "users" }),
+    Other = Window:MakeTab({ Name = "Other", Icon = "more-horizontal" }),
+    Misc = Window:MakeTab({ Name = "Misc", Icon = "settings-2" })
 }
 
 local Items = Tabs.Main:AddSection({
@@ -141,7 +142,7 @@ AutoFarm:AddDropdown({
 	end 
 })
 
-local function attack()
+local function cbmon()
     local localPlayer = Players.LocalPlayer
     if localPlayer and localPlayer.Character then
         local character = localPlayer.Character
@@ -227,7 +228,7 @@ AutoFarm:AddToggle({
         if autofarm then
             spawn(function()
                 while autofarm do
-                    attack()
+                    cbmon()
                     task.wait(1) 
                 end
             end)
@@ -235,11 +236,23 @@ AutoFarm:AddToggle({
     end 
 })
 
-local AutoTrait = Tabs.Other:AddSection({
-	Name = "Spin Trait"
+-- local TP1 = Tabs.Teleport:AddSection({
+--     Name = "Teleport - Island"
+-- })
+
+-- local TP2 = Tabs.Teleport:AddSection({
+--     Name = "Teleport - Player"
+-- })
+
+-- local TP3 = Tabs.Teleport:AddSection({
+--     Name = "Teleport - Player"
+-- })
+
+local Random = Tabs.Other:AddSection({
+	Name = "Random"
 })
 
-AutoTrait:AddToggle({
+Random:AddToggle({
     Name = "Auto Trait",
     Default = false,
     Callback = function(state)
@@ -247,6 +260,20 @@ AutoTrait:AddToggle({
         if config.atrait then
             while config.atrait do
                 game:GetService("ReplicatedStorage"):WaitForChild("Events"):WaitForChild("SpinTrait"):FireServer("Normal")
+                wait(1) 
+            end
+        end
+    end    
+})
+
+Random:AddToggle({
+    Name = "Auto Family",
+    Default = false,
+    Callback = function(state)
+        config.atrait = state 
+        if config.atrait then
+            while config.atrait do
+                game:GetService("ReplicatedStorage"):WaitForChild("Events"):WaitForChild("SpinFamily"):FireServer("Normal")
                 wait(1) 
             end
         end
