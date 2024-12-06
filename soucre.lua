@@ -1,5 +1,13 @@
 if tostring(game.PlaceId) == "18688206652" then
 
+pcall(function()
+	local vu=game:GetService("VirtualUser")
+	game:GetService("Players").LocalPlayer.Idled:Connect(function()
+		vu:CaptureController()
+		vu:ClickButton2(Vector2.new())
+	end)
+end)
+
 local config = {
     settime = 12,
     sukunaskill = false,
@@ -14,7 +22,7 @@ local config = {
 
 local Players = game:GetService("Players")
 
-local function rspl(player)
+function rspl(player)
     if player and player.Character then
         local humanoid = player.Character:FindFirstChildOfClass("Humanoid")
         if humanoid then
@@ -29,7 +37,7 @@ Players.PlayerAdded:Connect(function(player)
     end)
 end)
 
-local function tpequip(skillName)
+function tpequip(skillName)
     if skillName == "Sukuna" then
         game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(1061.43738, 92.1607361, 101.183472, -0.697700858, 0.0441585705, 0.715026915, 0.125600129, 0.990178764, 0.0614053048, -0.705292881, 0.132650018, -0.69639492)
         game.Players.LocalPlayer.Character.Humanoid:EquipTool(game:GetService("Players").LocalPlayer.Backpack:FindFirstChild("Sukuna"))
@@ -41,12 +49,11 @@ end
 
 local OrionLib = loadstring(game:HttpGet(("https://raw.githubusercontent.com/XenTz-Z/Orion/refs/heads/main/source")))()
 
-local Window = OrionLib:MakeWindow({ Name = "XenTz-Z > Ijul Piece 2", SaveConfig = false, IntroText = " ", IntroIcon = " " })
+local Window = OrionLib:MakeWindow({ Name = "XenTz-Z | Ijul Piece 2", ConfigFolder = "Orion", SaveConfig = true, IntroText = " ", IntroIcon = " " })
 
 local Tabs = {
     Main = Window:MakeTab({ Name = "Main", Icon = "home" }),
-    Other = Window:MakeTab({ Name = "Other", Icon = "more-horizontal" }),
-    Misc = Window:MakeTab({ Name = "Misc", Icon = "settings-2" })
+    Other = Window:MakeTab({ Name = "Other", Icon = "more-horizontal" })
 }
 
 local Items = Tabs.Main:AddSection({ Name = "Items" })
@@ -131,7 +138,7 @@ AutoFarm:AddDropdown({
 	end 
 })
 
-local function cbmon()
+function cbmon()
     local localPlayer = Players.LocalPlayer
     if localPlayer and localPlayer.Character then
         local character = localPlayer.Character
@@ -255,15 +262,6 @@ Family:AddToggle({
             end
         end
     end    
-})
-
-local Anti = Tabs.Misc:AddSection({ Name = "Anti" })
-
-Anti:AddButton({
-    Name = "AFK",
-    Callback = function()
-		loadstring(game:HttpGet(("https://raw.githubusercontent.com/Xub19/xtl/refs/heads/main/antiafk.lua")))()
-    end
 })
 
 OrionLib:Init()
