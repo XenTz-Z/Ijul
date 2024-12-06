@@ -8,7 +8,8 @@ local config = {
     snowisland1 = false,
     snowisland2 = false,
     abandoned = false,
-    atrait = false
+    atrait = false,
+    afamily = false
 }
 
 local Players = game:GetService("Players")
@@ -40,23 +41,15 @@ end
 
 local OrionLib = loadstring(game:HttpGet(("https://raw.githubusercontent.com/XenTz-Z/Orion/refs/heads/main/source")))()
 
-local Window = OrionLib:MakeWindow({ 
-    Name = "XenTz-Z > Ijul Piece 2", 
-    SaveConfig = false,
-    IntroText = " ", 
-    IntroIcon = " "
-})
+local Window = OrionLib:MakeWindow({ Name = "XenTz-Z > Ijul Piece 2", SaveConfig = false, IntroText = " ", IntroIcon = " " })
 
 local Tabs = {
     Main = Window:MakeTab({ Name = "Main", Icon = "home" }),
-    -- Teleport = Window:MakeTab({ Name = "Teleport", Icon = "users" }),
     Other = Window:MakeTab({ Name = "Other", Icon = "more-horizontal" }),
     Misc = Window:MakeTab({ Name = "Misc", Icon = "settings-2" })
 }
 
-local Items = Tabs.Main:AddSection({
-	Name = "Items"
-})
+local Items = Tabs.Main:AddSection({ Name = "Items" })
 
 Items:AddDropdown({
 	Name = "Select",
@@ -84,9 +77,7 @@ Items:AddButton({
     end
 })
 
-local ChangeTime = Tabs.Main:AddSection({ 
-    Name = "Change Time"
-})
+local ChangeTime = Tabs.Main:AddSection({ Name = "Change Time" })
 
 ChangeTime:AddParagraph("Time Default", "Sukuna: 12s - SnowIsland | Ice Awakening: 13s - AbondedSnowIsland")
 
@@ -105,9 +96,7 @@ ChangeTime:AddTextbox({
     end    
 })
 
-local AutoFarm = Tabs.Main:AddSection({
-    Name = "Farm & Teleport Island"
-})
+local AutoFarm = Tabs.Main:AddSection({ Name = "Farm & Teleport Island" })
 
 AutoFarm:AddParagraph("Island Select", "Snow Island 1 - Require: Sukuna | Snow Island 2 - Require: Ice Awakening")
 
@@ -236,23 +225,9 @@ AutoFarm:AddToggle({
     end 
 })
 
--- local TP1 = Tabs.Teleport:AddSection({
---     Name = "Teleport - Island"
--- })
+local Trait = Tabs.Other:AddSection({ Name = "Random Trait" })
 
--- local TP2 = Tabs.Teleport:AddSection({
---     Name = "Teleport - Player"
--- })
-
--- local TP3 = Tabs.Teleport:AddSection({
---     Name = "Teleport - Player"
--- })
-
-local Random = Tabs.Other:AddSection({
-	Name = "Random"
-})
-
-Random:AddToggle({
+Trait:AddToggle({
     Name = "Auto Trait",
     Default = false,
     Callback = function(state)
@@ -266,13 +241,15 @@ Random:AddToggle({
     end    
 })
 
-Random:AddToggle({
+local Family = Tabs.Other:AddSection({ Name = "Random Family" })
+
+Family:AddToggle({
     Name = "Auto Family",
     Default = false,
     Callback = function(state)
-        config.atrait = state 
-        if config.atrait then
-            while config.atrait do
+        config.afamily = state 
+        if config.afamily then
+            while config.afamily do
                 game:GetService("ReplicatedStorage"):WaitForChild("Events"):WaitForChild("SpinFamily"):FireServer("Normal")
                 wait(1) 
             end
@@ -280,9 +257,7 @@ Random:AddToggle({
     end    
 })
 
-local Anti = Tabs.Misc:AddSection({
-    Name = "Anti"
-})
+local Anti = Tabs.Misc:AddSection({ Name = "Anti" })
 
 Anti:AddButton({
     Name = "AFK",
@@ -294,5 +269,5 @@ Anti:AddButton({
 OrionLib:Init()
 
 else
-    game.Players.LocalPlayer:Kick("Error : Game Not Supported")
+game.Players.LocalPlayer:Kick("Error : Game Not Supported")
 end
